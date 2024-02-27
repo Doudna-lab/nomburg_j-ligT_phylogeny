@@ -1,0 +1,36 @@
+# Default threads for processes ran in this pipeline
+threads: 20
+
+ram_phylogeny: 30000
+
+# Parent directorry where the analyses will be stored
+run: "/groups/doudna/projects/daniel_projects/nomburg_j/ligT_phyrec_cl28"
+
+# Directory that stores input MSA files
+input_dir: "/groups/doudna/projects/daniel_projects/nomburg_j/input_dir"
+
+# Email address required for Entrez queries
+entrez_login: "thedoudnalab@gmail.com"
+
+# Parent path to the shared database files in the server
+shared_db_path: "/shared/db/genbank/257/blast"
+#shared_db_path: "/groups/doudna/team_resources/shared_databases/ncbi_nr"
+
+# Prefix name found in the input MSA filename
+input_prefix: ["A240L__YP_009703091__African_swine_fever_virus__10497", "CPXV195_protein__NP_619976__Cowpox_virus__10243", "DUTP_pyrophosphatase_fused__YP_009165712__Perigonia_lusca_single_nucleopolyhedrovirus__1675865", "Deoxyribonucleoside_kinase__YP_009173510__Chrysochromulina_ericina_virus__455364", "GrBNV_gp44-like_protein__YP_002321436__Oryctes_rhinoceros_nudivirus__92521", "Guanylate_kinase__YP_009480733__Pandoravirus_macleodensis__2107707", "HZV_115-like_protein__YP_002321369__Oryctes_rhinoceros_nudivirus__92521", "HZV_115-like_protein__YP_010087650__Homarus_gammarus_nudivirus__2509616", "NRK-1__YP_009345740__Mythimna_unipuncta_granulovirus_B__2169746", "ORF117__YP_003517857__Lymantria_xylina_nucleopolyhedrovirus__166921", "ORF40-like_protein__YP_009552967__Bufonid_herpesvirus_1__2282206", "ORF76__YP_009447900__Ictalurid_herpesvirus_2__508441", "ORF_10__YP_001876447__Beluga_whale_coronavirus_SW1__694015", "TK2__YP_009116691__Tipula_oleracea_nudivirus__1546257", "TK3__YP_009116661__Tipula_oleracea_nudivirus__1546257", "deoxynucleotide_monophosphate_-dNMP-_kinase__YP_009162466__Salmon_gill_poxvirus__1680908", "guanosine_monophosphate_kinase__YP_009051876__Penaeus_monodon_nudivirus__1529056", "guanosine_monophosphate_kinase__YP_009553147__Drosophila_innubila_nudivirus__2057187", "guanylate_kinase__YP_009120260__Pandoravirus_inopinatum__1605721", "hypothetical_protein_BNJ_00086__YP_009352506__Kaumoebavirus_Viruses.__X", "hypothetical_protein_HVRV_s11_gp2__YP_002790895__Homalodisca_vitripennis_reovirus__411854", "hypothetical_protein_SlsnVgp096__YP_009505905__Spodoptera_littoralis_nucleopolyhedrovirus__10456", "hypothetical_protein__YP_006908569__Epinotia_aporema_granulovirus__166056", "hypothetical_protein_pv_135__YP_009001037__Pithovirus_sibericum__1450746", "nicotinamide_riboside_kinase_1__YP_009001526__Anomala_cuprea_entomopoxvirus__62099", "orf32_gene_product__YP_004956780__Helicoverpa_zea_nudivirus_2__1128424", "orf34_gene_product__YP_004956782__Helicoverpa_zea_nudivirus_2__1128424", "p-loop_NTPase__YP_009051884__Penaeus_monodon_nudivirus__1529056", "putative_deoxynucleoside_kinase__YP_009052244__Aureococcus_anophagefferens_virus__1474867", "putative_deoxynucleoside_monophosphate_kinase__YP_003969712__Cafeteria_roenbergensis_virus_BV-PW1__693272", "putative_deoxynucleotide_monophosphate_kinase__YP_004347186__Lausannevirus__999883", "thymidylate_kinase__YP_003358216__Anguillid_herpesvirus_1__150286", "uridine_kinase__YP_007354317__Acanthamoeba_polyphaga_moumouvirus__1269028"]
+
+cluster: ["28"]
+
+taxid: "10239"
+
+# Name given to the merger of the databases collected for the analysis
+db_prefix: ["nr"]
+
+# Path to NCBI taxonomy download directory
+taxdump_path: "/groups/doudna/team_resources/shared_databases/taxdump"
+
+# PSI-BLAST custom columns
+blast_custom_cols: "qacc sacc evalue pident qcovhsp staxid"
+
+# Jpred internally generated ID -- downloaded from JPRED online server
+jpred_id: "jp_T6I_JjO"

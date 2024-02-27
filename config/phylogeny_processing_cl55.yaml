@@ -1,0 +1,36 @@
+# Default threads for processes ran in this pipeline
+threads: 20
+
+ram_phylogeny: 30000
+
+# Parent directorry where the analyses will be stored
+run: "/groups/doudna/projects/daniel_projects/nomburg_j/ligT_phyrec_cl55"
+
+# Directory that stores input MSA files
+input_dir: "/groups/doudna/projects/daniel_projects/nomburg_j/input_dir"
+
+# Email address required for Entrez queries
+entrez_login: "thedoudnalab@gmail.com"
+
+# Parent path to the shared database files in the server
+shared_db_path: "/shared/db/genbank/257/blast"
+#shared_db_path: "/groups/doudna/team_resources/shared_databases/ncbi_nr"
+
+# Prefix name found in the input MSA filename
+input_prefix: ["B962L__YP_009703129__African_swine_fever_virus__10497", "CI__YP_007969888__Donkey_orchid_virus_A__1198144", "HrpA-like_helicase__YP_007354542__Acanthamoeba_polyphaga_moumouvirus__1269028", "hypothetical_protein_ATCV1_Z596R__YP_001427077__Acanthocystis_turfacea_chlorella_virus_1__322019", "putative_superfamily_II_RNA_helicase__YP_009052108__Aureococcus_anophagefferens_virus__1474867"]
+
+cluster: ["55"]
+
+taxid: "10239"
+
+# Name given to the merger of the databases collected for the analysis
+db_prefix: ["nr"]
+
+# Path to NCBI taxonomy download directory
+taxdump_path: "/groups/doudna/team_resources/shared_databases/taxdump"
+
+# PSI-BLAST custom columns
+blast_custom_cols: "qacc sacc evalue pident qcovhsp staxid"
+
+# Jpred internally generated ID -- downloaded from JPRED online server
+jpred_id: "jp_T6I_JjO"

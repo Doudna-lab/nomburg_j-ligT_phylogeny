@@ -1,0 +1,34 @@
+# Default threads for processes ran in this pipeline
+threads: 5
+
+ram_phylogeny: 30000
+
+# Parent directorry where the analyses will be stored
+run: "/groups/doudna/projects/daniel_projects/nomburg_j/ligT_phyrec"
+
+# Directory that stores input MSA files
+input_dir: "/groups/doudna/projects/daniel_projects/nomburg_j/input_dir/"
+
+# Email address required for Entrez queries
+entrez_login: "thedoudnalab@gmail.com"
+
+# Parent path to the shared database files in the server
+shared_db_path: "/shared/db/genbank/257/blast"
+#shared_db_path: "/groups/doudna/team_resources/shared_databases/ncbi_nr"
+
+# Prefix name found in the input MSA filename
+input_prefix: ["G2II_nLTR_RT", "G2II_nLTR_RT_EUK"]
+
+cluster: ["28", "55", "56", "735"]
+
+# Name given to the merger of the databases collected for the analysis
+db_prefix: ["nr"]
+
+# Path to NCBI taxonomy download directory
+taxdump_path: "/groups/doudna/team_resources/shared_databases/taxdump"
+
+# PSI-BLAST custom columns
+blast_custom_cols: "qacc sacc evalue pident qcovhsp staxid"
+
+# Jpred internally generated ID -- downloaded from JPRED online server
+jpred_id: "jp_T6I_JjO"
