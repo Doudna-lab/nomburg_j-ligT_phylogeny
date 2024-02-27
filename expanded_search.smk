@@ -44,6 +44,8 @@ rule iterative_search:
 		custom_cols = config["blast_custom_cols"],
 	conda:
 		"envs/blast.yaml"
+	threads:
+		config["threads"]
 	message:
 		"""
 Blasting query :\n {input.fasta_in}
