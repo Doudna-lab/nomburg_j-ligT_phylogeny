@@ -28,6 +28,9 @@ rule all:
 		# Re-align the initial MSA with the PSI-BLAST hit sequences
 		expand("{run}/clustalo_cluster{cluster}/{input_prefix}/db-{db_prefix}_query.msa.fasta",
 			run=config["run"], db_prefix=config["db_prefix"], input_prefix=config["input_prefix"], cluster=config["cluster"]),
+		#
+		expand("{run}/clustalo_cluster{cluster}/merged/db-{db_prefix}_query_merged-input.msa.fasta",
+			run=config["run"], db_prefix=config["db_prefix"], input_prefix=config["input_prefix"], cluster=config["cluster"])
 
 
 rule iterative_search:
@@ -137,12 +140,27 @@ rule realignment:
 		fasta_in=lambda wildcards: glob.glob("{input_dir}/{input_prefix}.fasta".format(
 			input_dir=config["input_dir"],input_prefix=wildcards.input_prefix))
 	output:
-		post_search_msa = "{run}/clustalo_cluster{cluster}/{input_prefix}/db-{db_prefix}_query.msa.fasta"
-	params:
-		merged_input = "{run}/clustalo_cluster{cluster}/{input_prefix}/db-{db_prefix}_query_merged-input.fasta",
+		post_search_msa = "{run}/clustalo_cluster{cluster}/{input_prefix}/db-{db_prefix}_query.msa.fasta",
+		merged_input= "{run}/clustalo_cluster{cluster}/{input_prefix}/db-{db_prefix}_query_merged-input.fasta",
 	threads: config["threads"]
 	shell:
 		"""
-		cat {input.fasta_in} {input.hits_fasta} > {params.merged_input}
-		clustalo --threads {threads} -i {params.merged_input} -o {output.post_search_msa} -v
+		cat {input.fasta_in} {input.hits_fasta} > {output.merged_input}
+		clustalo --threads {threads} -i {output.merged_input} -o {output.post_search_msa} -v
+		"""
+
+# noinspection SmkAvoidTabWhitespace
+rule merged_alignment:
+	input:
+		hits_fasta = expand("{run}/clustalo_cluster{cluster}/{input_prefix}/db-{db_prefix}_query_merged-input.fasta",
+			run=config["run"],db_prefix=config["db_prefix"], input_prefix=config["input_prefix"], cluster=config["cluster"])
+	output:
+		merged_msa_fasta = "{run}/clustalo_cluster{cluster}/merged/db-{db_prefix}_query_merged-input.msa.fasta",
+	params:
+		merged_fasta = "{run}/clustalo_cluster{cluster}/merged/db-{db_prefix}_query_merged-input.fasta",
+	threads: config["threads"]
+	shell:
+		"""
+		cat {input.hits_fasta} > {params.merged_fasta}
+		clustalo --threads {threads} -i {params.merged_fasta} -o {output.merged_msa_fasta} -v
 		"""
