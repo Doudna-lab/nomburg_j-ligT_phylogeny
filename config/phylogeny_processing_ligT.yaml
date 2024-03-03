@@ -4,7 +4,7 @@ threads: 20
 ram_phylogeny: 30000
 
 # Parent directorry where the analyses will be stored
-run: "/groups/doudna/projects/daniel_projects/nomburg_j/ligT_phyrec_cl735"
+run: "/groups/doudna/projects/daniel_projects/nomburg_j/ligT_phyrec"
 
 # Directory that stores input MSA files
 input_dir: "/groups/doudna/projects/daniel_projects/nomburg_j/input_dir"
@@ -17,14 +17,13 @@ shared_db_path: "/shared/db/genbank/257/blast"
 #shared_db_path: "/groups/doudna/team_resources/shared_databases/ncbi_nr"
 
 # Prefix name found in the input MSA filename
-input_prefix: ["hemagglutinin__YP_009987463__Lake_Chad_virus__688438"]
+input_prefix: ["Iridio_AM__DH26_gp015__YP_009021100_", "Iridovirus_AM__YP_009021100_", "Marseillevirus__MAR_ORF259__YP_003406995_", "MERS__NS4b__YP_009047207_", "MHV__NS2b__YP_009824980.1_", "Mimivirus__WcbI__Uniprot__A0A2H4UTY7__", "Phage_T4__Acb1__NP_049750.1_", "Pigeonpox__PDE__YP_009046269_", "Pithovirus__DUF1868__Uniprot__A0A481Z2W6_", "Porcine_Torovirus__polyprotein__YP_008798230_", "Rotavirus_A__VP3__YP_002302228_"]
 
-cluster: ["735"]
+cluster: ["ligT"]
 
 match_colum: "family_taxonID"
 add_colum: "family_genome_type"
-taxid: "1"
-
+taxid: "10239"
 
 # Name given to the merger of the databases collected for the analysis
 db_prefix: ["nr"]

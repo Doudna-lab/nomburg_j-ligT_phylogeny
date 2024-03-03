@@ -1,0 +1,132 @@
+family	family_genome_type	family_taxonID
+Poxviridae	dsDNA (large)	10240
+Polydnaviriformidae	dsDNA (small)	2946196
+Adomaviridae	dsDNA (medium)	2219222
+Polyomaviridae	dsDNA (small)	151341
+Herpesviridae	dsDNA (large)	10292
+Adenoviridae	dsDNA (medium)	10508
+Mimiviridae	dsDNA (large)	549779
+Marseilleviridae	dsDNA (large)	944644
+Circoviridae	ssDNA	39724
+Pithoviridae	dsDNA (large)	2023203
+Iridoviridae	dsDNA (large)	10486
+Phycodnaviridae	dsDNA (large)	10501
+Nudiviridae	dsDNA (large)	1511852
+Asfarviridae	dsDNA (large)	137992
+Alphatetraviridae	ssRNA(+)	1283207
+Birnaviridae	RNA (Other)	10993
+Dicistroviridae	ssRNA(+)	232795
+Betaflexiviridae	ssRNA(+)	675068
+Alloherpesviridae	dsDNA (large)	548682
+Orthomyxoviridae	ssRNA(-)	11308
+Nanoviridae	ssDNA	251095
+Nairoviridae	ssRNA(-)	1980415
+Flaviviridae	ssRNA(+)	11050
+Baculoviridae	dsDNA (large)	10442
+Geminiviridae	ssDNA	10811
+Virgaviridae	ssRNA(+)	675071
+Benyviridae	ssRNA(+)	1513233
+Ascoviridae	dsDNA (large)	43682
+Reoviridae	RNA (Other)	10880
+Coronaviridae	ssRNA(+)	11118
+Papillomaviridae	dsDNA (small)	151340
+Nyamiviridae	ssRNA(-)	1513294
+Nimaviridae	dsDNA (large)	196937
+Bornaviridae	ssRNA(-)	178830
+Solemoviridae	ssRNA(+)	2169577
+Tombusviridae	ssRNA(+)	39738
+Luteoviridae	ssRNA(+)	119163
+Paramyxoviridae	ssRNA(-)	11158
+Caulimoviridae	dsDNA (small)	186534
+Hytrosaviridae	dsDNA (large)	1285590
+Curvulaviridae	RNA (Other)	2842317
+Potyviridae	ssRNA(+)	39729
+Tobaniviridae	ssRNA(+)	2508209
+Pneumoviridae	ssRNA(-)	11244
+Rhabdoviridae	ssRNA(-)	11270
+Filoviridae	ssRNA(-)	11266
+Closteroviridae	ssRNA(+)	69973
+Arteriviridae	ssRNA(+)	76803
+Amalgaviridae	RNA (Other)	1511860
+Arenaviridae	RNA (Other)	11617
+Anelloviridae	ssDNA	687329
+Partitiviridae	RNA (Other)	11012
+Picornaviridae	ssRNA(+)	12058
+Parvoviridae	ssDNA	10780
+Astroviridae	ssRNA(+)	39733
+Hepeviridae	ssRNA(+)	291484
+Chuviridae	ssRNA(-)	2501952
+Xinmoviridae	ssRNA(-)	2501985
+Artoviridae	ssRNA(-)	2501986
+Myriaviridae	ssRNA(-)	2842324
+Kitaviridae	ssRNA(+)	2560061
+Peribunyaviridae	ssRNA(-)	1980416
+Secoviridae	ssRNA(+)	675072
+Iflaviridae	ssRNA(+)	699189
+Marnaviridae	ssRNA(+)	324901
+Alphaflexiviridae	ssRNA(+)	675064
+Cruliviridae	ssRNA(-)	2501939
+Tospoviridae	ssRNA(-)	1980419
+Fimoviridae	ssRNA(-)	1980412
+Tolecusatellitidae	ssDNA	1993640
+Caliciviridae	ssRNA(+)	11974
+Lavidaviridae	dsDNA (medium)	1914302
+Togaviridae	ssRNA(+)	11018
+Chrysoviridae	RNA (Other)	249310
+Picobirnaviridae	RNA (Other)	585893
+Retroviridae	RNA (Other)	11632
+Lispiviridae	ssRNA(-)	2501987
+Sunviridae	ssRNA(-)	1884452
+Totiviridae	RNA (Other)	11006
+Staphylococcaceae	NA	90964
+Tymoviridae	ssRNA(+)	249184
+Sinhaliviridae	ssRNA(+)	2732891
+Hepadnaviridae	dsDNA (small)	10404
+Genomoviridae	ssDNA	1910928
+Alphasatellitidae	ssDNA	1458186
+Smacoviridae	ssDNA	2169574
+Phenuiviridae	ssRNA(-)	1980418
+Bromoviridae	ssRNA(+)	39740
+Mitoviridae	ssRNA(+)	2732892
+Narnaviridae	ssRNA(+)	186766
+Botourmiaviridae	ssRNA(+)	2560063
+Polymycoviridae	RNA (Other)	2732900
+Nodaviridae	ssRNA(+)	12283
+Quadriviridae	RNA (Other)	1299296
+Hantaviridae	ssRNA(-)	1980413
+Fusariviridae	ssRNA(+)	1661063
+Megabirnaviridae	RNA (Other)	1285596
+Nenyaviridae	ssDNA	2946189
+Redondoviridae	ssDNA	2732652
+Bacilladnaviridae	ssDNA	2169567
+Phasmaviridae	ssRNA(-)	1980417
+Deltaflexiviridae	ssRNA(+)	2169568
+Polycipiviridae	ssRNA(+)	2169570
+Cruciviridae	ssDNA	2058757
+Mayoviridae	ssRNA(+)	2732890
+Mymonaviridae	ssRNA(-)	1883067
+Olifoviridae	ssRNA(+)	2732896
+Hypoviridae	ssRNA(+)	39748
+Amnoonviridae	ssRNA(-)	2501949
+Leishbuviridae	ssRNA(-)	2560064
+Aliusviridae	ssRNA(-)	2842313
+Aspiviridae	ssRNA(-)	568247
+Matonaviridae	ssRNA(+)	2560066
+Cremegaviridae	ssRNA(+)	2732894
+Gresnaviridae	ssRNA(+)	2732895
+Euroniviridae	ssRNA(+)	2501982
+Nanghoshaviridae	ssRNA(+)	2732898
+Natareviridae	ssRNA(-)	2842325
+Mypoviridae	ssRNA(-)	2501940
+Endornaviridae	RNA (Other)	564644
+Nanhypoviridae	ssRNA(+)	2732899
+Mesoniviridae	ssRNA(+)	1312872
+Roniviridae	ssRNA(+)	199704
+Metaviridae	RNA (Other)	186665
+Sarthroviridae	ssRNA(+)	1922240
+Gammaflexiviridae	ssRNA(+)	675061
+Kolmioviridae	ssRNA(-)	2842321
+Qinviridae	ssRNA(-)	2501968
+Yadokariviridae	ssRNA(+)	2946194
+Medioniviridae	ssRNA(+)	2501983
+Yueviridae	ssRNA(-)	2501959

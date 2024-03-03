@@ -21,7 +21,9 @@ input_prefix: ["NS1__YP_009058894__Bufavirus-3__1391667", "NS1__YP_009116876__Se
 
 cluster: ["56"]
 
-taxid: "10239"
+match_colum: "family_taxonID"
+add_colum: "family_genome_type"
+taxid: "1"
 
 
 # Name given to the merger of the databases collected for the analysis

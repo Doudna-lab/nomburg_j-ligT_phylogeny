@@ -30,7 +30,15 @@ rule all:
 			run=config["run"], db_prefix=config["db_prefix"], input_prefix=config["input_prefix"], cluster=config["cluster"]),
 		#
 		expand("{run}/clustalo_cluster{cluster}/merged/db-{db_prefix}_query_merged-input.msa.fasta",
-			run=config["run"], db_prefix=config["db_prefix"], input_prefix=config["input_prefix"], cluster=config["cluster"])
+			run=config["run"], db_prefix=config["db_prefix"], input_prefix=config["input_prefix"], cluster=config["cluster"]),
+		#
+		expand("{run}/clustalo_cluster{cluster}/merged/db-{db_prefix}_query_merged-txid.msa.fasta",
+			run=config["run"],db_prefix=config["db_prefix"],input_prefix=config["input_prefix"],cluster=config[
+				"cluster"]),
+		#
+		expand("{run}/fasttree{cluster}/db-{db_prefix}_query_merged-txid.nwk",
+			run=config["run"],db_prefix=config["db_prefix"],input_prefix=config["input_prefix"],cluster=config[
+				"cluster"]),
 
 
 rule iterative_search:
@@ -163,4 +171,40 @@ rule merged_alignment:
 		"""
 		cat {input.hits_fasta} > {params.merged_fasta}
 		clustalo --threads {threads} -i {params.merged_fasta} -o {output.merged_msa_fasta} -v
+		"""
+
+# noinspection SmkAvoidTabWhitespace
+rule attach_lineage:
+	input:
+		txid_lineage = lambda wildcards: glob.glob("{input_dir}/taxdump/taxidlineage.dmp".format(
+			input_dir=config["input_dir"])),
+		id_match_table = lambda wildcards: glob.glob("{input_dir}/tables/family_genome_types_taxID.tsv".format(
+			input_dir=config["input_dir"])),
+		merged_msa_fasta = "{run}/clustalo_cluster{cluster}/merged/db-{db_prefix}_query_merged-input.msa.fasta"
+	output:
+		merged_msa_fasta_txid = "{run}/clustalo_cluster{cluster}/merged/db-{db_prefix}_query_merged-txid.msa.fasta",
+	params:
+		match_colum = config["match_colum"],
+		add_colum = config["add_colum"]
+	conda:
+		"envs/bio.yaml"
+	script:
+		"py/attach_taxid2fasta.py"
+
+# noinspection SmkAvoidTabWhitespace
+rule phylogenetic_reconstruction:
+	input:
+		merged_msa_fasta_txid = "{run}/clustalo_cluster{cluster}/merged/db-{db_prefix}_query_merged-txid.msa.fasta"
+	output:
+		newick_tree = "{run}/fasttree{cluster}/db-{db_prefix}_query_merged-txid.nwk"
+	params:
+		match_colum = config["match_colum"],
+		add_colum = config["add_colum"]
+	conda:
+		"envs/fasttree.yaml"
+	threads:
+		config["threads"]
+	shell:
+		"""
+		FastTreeMP -gamma < {input.merged_msa_fasta_txid} > {output.newick_tree}
 		"""
