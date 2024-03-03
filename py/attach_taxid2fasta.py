@@ -89,8 +89,8 @@ def main():
 	# Snakemake Imports
 	#   SMK Inputs
 	id_match_table = str(snakemake.input.id_match_table)
-	merged_msa_fasta = str(snakemake.params.merged_msa_fasta)
-	txid_lineage = str(snakemake.params.txid_lineage)
+	merged_msa_fasta = str(snakemake.input.merged_msa_fasta)
+	txid_lineage = str(snakemake.input.txid_lineage)
 	#   SMK Params
 	match_colum = str(snakemake.params.match_colum)
 	add_colum = str(snakemake.params.add_colum)
