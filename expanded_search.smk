@@ -30,15 +30,22 @@ rule all:
 			run=config["run"], db_prefix=config["db_prefix"], input_prefix=config["input_prefix"], cluster=config["cluster"]),
 		#
 		expand("{run}/clustalo_cluster{cluster}/merged/db-{db_prefix}_query_merged-input.msa.fasta",
-			run=config["run"], db_prefix=config["db_prefix"], input_prefix=config["input_prefix"], cluster=config["cluster"]),
+			run=config["run"], db_prefix=config["db_prefix"],cluster=config["cluster"]),
 		#
 		expand("{run}/clustalo_cluster{cluster}/merged/db-{db_prefix}_query_merged-txid.msa.fasta",
-			run=config["run"],db_prefix=config["db_prefix"],input_prefix=config["input_prefix"],cluster=config[
-				"cluster"]),
+			run=config["run"],db_prefix=config["db_prefix"],cluster=config["cluster"]),
 		#
 		expand("{run}/fasttree{cluster}/db-{db_prefix}_query_merged-txid.nwk",
-			run=config["run"],db_prefix=config["db_prefix"],input_prefix=config["input_prefix"],cluster=config[
-				"cluster"]),
+			run=config["run"],db_prefix=config["db_prefix"],cluster=config["cluster"]),
+		#
+		expand("{run}/psiblast_out_cluster{cluster}/merged/merge_db-{db_prefix}_query.blastout",
+			run=config["run"],db_prefix=config["db_prefix"],cluster=config["cluster"]),
+		#
+		expand("{run}/krona_cluster{cluster}/merged/merge_db-{db_prefix}_query_taxid_counts.tsv",
+			run=config["run"],db_prefix=config["db_prefix"],cluster=config["cluster"]),
+		#
+		expand("{run}/krona_cluster{cluster}/merged/merge_db-{db_prefix}_query_krona-plot.html",
+			run=config["run"],db_prefix=config["db_prefix"],cluster=config["cluster"])
 
 
 rule iterative_search:
@@ -207,4 +214,77 @@ rule phylogenetic_reconstruction:
 	shell:
 		"""
 		FastTreeMP -gamma < {input.merged_msa_fasta_txid} > {output.newick_tree}
+		"""
+
+# noinspection SmkAvoidTabWhitespace
+rule merge_psiblast_out:
+	input:
+		list_psiblast_out = expand("{run}/psiblast_out_cluster{cluster}/{input_prefix}/db-{db_prefix}_query.blastout",
+			run=config["run"],db_prefix=config["db_prefix"],input_prefix=config["input_prefix"],cluster=config[
+				"cluster"])
+	output:
+		merged_psiblast = "{run}/psiblast_out_cluster{cluster}/merged/merge_db-{db_prefix}_query.blastout"
+	shell:
+		"""
+		cat {input.list_psiblast_out} > {output.merged_psiblast}
+		"""
+
+# noinspection SmkAvoidTabWhitespace
+rule merged_taxid_parse:
+	input:
+		psiblast_out = "{run}/psiblast_out_cluster{cluster}/merged/merge_db-{db_prefix}_query.blastout"
+	output:
+		taxid_counts = "{run}/krona_cluster{cluster}/merged/merge_db-{db_prefix}_query_taxid_counts.tsv",
+		hits_fasta = "{run}/psiblast_out_cluster{cluster}/merged/merge_db-{db_prefix}_query_hits.fasta"
+	params:
+		blast_col_names = config["blast_custom_cols"]
+	conda:
+		"envs/bio.yaml"
+	script:
+		"py/blastout_taxid_count.py"
+
+# noinspection SmkAvoidTabWhitespace
+rule merged_krona:
+	input:
+		merged_taxid_counts = "{run}/krona_cluster{cluster}/merged/merge_db-{db_prefix}_query_taxid_counts.tsv",
+	output:
+		merged_krona_chart = "{run}/krona_cluster{cluster}/merged/merge_db-{db_prefix}_query_krona-plot.html",
+	params:
+		taxdump_path = config["taxdump_path"]
+	conda:
+		"envs/krona.yaml"
+	message:
+		"""
+This rule implements Krona for interactive visualization of taxonomic distribution of the sequences.
+The first five lines of the shell section are intended to correct Krona's issues with handling of taxonomic
+background data.
+Input data: {input.merged_taxid_counts}
+Output: {output.merged_krona_chart}
+Wildcards used in this rule: {wildcards}
+		"""
+	shell:
+		"""		
+mkdir $CONDA_PREFIX/bin/scripts || true
+mkdir $CONDA_PREFIX/bin/taxonomy || true
+ln -s $CONDA_PREFIX/opt/krona/scripts/extractTaxonomy.pl $CONDA_PREFIX/bin/scripts || true 
+ln -s $CONDA_PREFIX/opt/krona/scripts/taxonomy.make $CONDA_PREFIX/bin/scripts || true
+
+# Retry logic for ktUpdateTaxonomy.sh
+retry_count=0
+max_retries=10
+while true; do
+    if ktUpdateTaxonomy.sh; then
+        break  # If the command succeeds, exit the loop
+    else
+        retry_count=$((retry_count+1))
+        if [ $retry_count -ge $max_retries ]; then
+            echo "Reached maximum retry attempts. Exiting."
+            exit 1  # Exit script if maximum retries reached
+        fi
+        echo "Error occurred. Retrying ($retry_count of $max_retries)..."
+        sleep 10  # Add a delay before retrying (adjust as needed)
+    fi
+done
+
+ktImportTaxonomy -m 2 -t 1 -tax $CONDA_PREFIX/bin/taxonomy -o {output.merged_krona_chart} {input.merged_taxid_counts}
 		"""
