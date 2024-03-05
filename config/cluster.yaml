@@ -14,5 +14,8 @@ merged_alignment:
 phylogeny:
   time: '30:00:00'
 
+merged_taxid_parse:
+  time: '8:00:00'
+
 phylogenetic_reconstruction:
   time: '30:00:00'
