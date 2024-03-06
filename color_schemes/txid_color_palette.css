@@ -1,0 +1,50 @@
+/* Color Theme Swatches in Hex */
+.My-Color-Blind-Safe-Theme-1-hex { color: #2F00EA; }
+.My-Color-Blind-Safe-Theme-2-hex { color: #06AD2D; }
+.My-Color-Blind-Safe-Theme-3-hex { color: #C24154; }
+.My-Color-Blind-Safe-Theme-4-hex { color: #EACC2B; }
+.My-Color-Blind-Safe-Theme-5-hex { color: #795599; }
+.My-Color-Blind-Safe-Theme-6-hex { color: #84C6EB; }
+.My-Color-Blind-Safe-Theme-7-hex { color: #EF6F6F; }
+.My-Color-Blind-Safe-Theme-8-hex { color: #CAE56F; }
+.My-Color-Blind-Safe-Theme-9-hex { color: #0057F9; }
+.My-Color-Blind-Safe-Theme-10-hex { color: #F0D699; }
+.My-Color-Blind-Safe-Theme-11-hex { color: #548F04; }
+.My-Color-Blind-Safe-Theme-12-hex { color: #E19F56; }
+.My-Color-Blind-Safe-Theme-13-hex { color: #9003A3; }
+.My-Color-Blind-Safe-Theme-14-hex { color: #0AEBBF; }
+.My-Color-Blind-Safe-Theme-15-hex { color: #EA046A; }
+
+/* Color Theme Swatches in RGBA */
+.My-Color-Blind-Safe-Theme-1-rgba { color: rgba(47, 0, 234, 1); }
+.My-Color-Blind-Safe-Theme-2-rgba { color: rgba(6, 173, 45, 1); }
+.My-Color-Blind-Safe-Theme-3-rgba { color: rgba(194, 65, 84, 1); }
+.My-Color-Blind-Safe-Theme-4-rgba { color: rgba(234, 204, 43, 1); }
+.My-Color-Blind-Safe-Theme-5-rgba { color: rgba(121, 85, 153, 1); }
+.My-Color-Blind-Safe-Theme-6-rgba { color: rgba(132, 198, 235, 1); }
+.My-Color-Blind-Safe-Theme-7-rgba { color: rgba(239, 111, 111, 1); }
+.My-Color-Blind-Safe-Theme-8-rgba { color: rgba(202, 229, 111, 1); }
+.My-Color-Blind-Safe-Theme-9-rgba { color: rgba(0, 87, 249, 1); }
+.My-Color-Blind-Safe-Theme-10-rgba { color: rgba(240, 214, 153, 1); }
+.My-Color-Blind-Safe-Theme-11-rgba { color: rgba(84, 143, 4, 1); }
+.My-Color-Blind-Safe-Theme-12-rgba { color: rgba(225, 159, 86, 1); }
+.My-Color-Blind-Safe-Theme-13-rgba { color: rgba(144, 3, 163, 1); }
+.My-Color-Blind-Safe-Theme-14-rgba { color: rgba(10, 235, 191, 1); }
+.My-Color-Blind-Safe-Theme-15-rgba { color: rgba(234, 4, 106, 1); }
+
+/* Color Theme Swatches in HSLA */
+.My-Color-Blind-Safe-Theme-1-hsla { color: hsla(252, 100, 45, 1); }
+.My-Color-Blind-Safe-Theme-2-hsla { color: hsla(134, 93, 35, 1); }
+.My-Color-Blind-Safe-Theme-3-hsla { color: hsla(351, 51, 50, 1); }
+.My-Color-Blind-Safe-Theme-4-hsla { color: hsla(50, 81, 54, 1); }
+.My-Color-Blind-Safe-Theme-5-hsla { color: hsla(271, 28, 46, 1); }
+.My-Color-Blind-Safe-Theme-6-hsla { color: hsla(201, 72, 71, 1); }
+.My-Color-Blind-Safe-Theme-7-hsla { color: hsla(0, 80, 68, 1); }
+.My-Color-Blind-Safe-Theme-8-hsla { color: hsla(73, 69, 66, 1); }
+.My-Color-Blind-Safe-Theme-9-hsla { color: hsla(219, 100, 48, 1); }
+.My-Color-Blind-Safe-Theme-10-hsla { color: hsla(42, 74, 77, 1); }
+.My-Color-Blind-Safe-Theme-11-hsla { color: hsla(85, 94, 28, 1); }
+.My-Color-Blind-Safe-Theme-12-hsla { color: hsla(31, 69, 60, 1); }
+.My-Color-Blind-Safe-Theme-13-hsla { color: hsla(292, 96, 32, 1); }
+.My-Color-Blind-Safe-Theme-14-hsla { color: hsla(168, 91, 48, 1); }
+.My-Color-Blind-Safe-Theme-15-hsla { color: hsla(333, 96, 46, 1); }

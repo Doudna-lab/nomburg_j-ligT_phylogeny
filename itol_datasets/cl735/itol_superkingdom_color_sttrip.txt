@@ -61,7 +61,7 @@ COLOR_BRANCHES 0
 #left margin, used to increase/decrease the spacing to the next dataset. Can be negative, causing datasets to overlap.
 #MARGIN 0
 
-#border width; if set above 0, a border of specified width (in pixels) will be drawn around the color strip 
+#border width; if set above 0, a border of specified width (in pixels) will be drawn around the color strip
 #BORDER_WIDTH 0
 
 #border color; used when BORDER_WIDTH is above 0
@@ -113,24 +113,11 @@ COLOR_BRANCHES 0
 #       Actual data follows after the "DATA" keyword              #
 #=================================================================#
 DATA
-# Orthornavirae
-CONTAINS==\|2732396\| #664dff
-# Nucleocytoviricota
-CONTAINS==\|2732007\| #e64212
-# Terrabacteria group
-CONTAINS==\|1783272\| #664d0a
-# Fungi
-CONTAINS==\|4751\| #c24d0a
-# Embryophyta
-CONTAINS==\|3193\| #1fa312
-# Arthropoda 
-CONTAINS==\|6656\| #e6b012
+# Eukaryota
+CONTAINS==\|2759\| #2F00EA
 
+# Viruses
+CONTAINS==\|10239\| #06AD2D
 
-#Examples:
-#assign a red colored strip to leaf 9606, with label 'Human'
-#9606 #ff0000 Human
-
-#assign a green, semi-transparent (alpha 0.5) strip to an internal node, without any label. If 'Show internal values' is set to 'No', this will only be displayed if the node is collapsed. 
-#9606|5664 rgba(0,255,0,0.5)
-
+# Bacteria
+CONTAINS==\|2\| #C24154
