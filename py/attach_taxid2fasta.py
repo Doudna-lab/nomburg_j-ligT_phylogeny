@@ -3,6 +3,7 @@
 # == Installed Modules
 from Bio import SeqIO
 import pandas as pd
+import re
 # == Project Modules
 
 
@@ -85,6 +86,14 @@ def remove_fasta_duplicates(fasta_seq_records):
 	return unique_records
 
 
+def filter_txid_lineage(fasta_seq_records, txid_lineage_filter):
+	filtered_seq_records = []
+	for record in fasta_seq_records:
+		if re.search(r"\|{}\|".format(txid_lineage_filter), record.id):
+			filtered_seq_records.append(record)
+	return filtered_seq_records
+
+
 def main():
 	# Snakemake Imports
 	#   SMK Inputs
@@ -94,6 +103,7 @@ def main():
 	#   SMK Params
 	match_colum = str(snakemake.params.match_colum)
 	add_colum = str(snakemake.params.add_colum)
+	filter_taxid = str(snakemake.params.filter_taxid)
 	#   SMK Outputs
 	merged_msa_fasta_txid = str(snakemake.output.merged_msa_fasta_txid)
 
@@ -101,6 +111,8 @@ def main():
 	# id_match_table = "/Users/bellieny/projects/nomburg_j-ligT_phylogeny/input_data/family_genome_types_taxID.tsv"
 	# merged_msa_fasta = "/Users/bellieny/projects/nomburg_j-ligT_phylogeny/dump/merged/db-nr_query_merged-input.msa.fasta"
 	# txid_lineage = "/Users/bellieny/projects/nomburg_j-ligT_phylogeny/input_data/taxidlineage.dmp"
+	# match_colum = "family_taxonID"
+	# add_colum = "family_genome_type"
 
 	# Import Reference Table
 	df_reference = pd.read_csv(id_match_table, sep="\t")
@@ -121,10 +133,15 @@ def main():
 
 	unique_txid_records = remove_fasta_duplicates(txid_records)
 
-	# test_rec = [unique_txid_records[rec_idx] for rec_idx in range(1, 50)]
+	filtered_txid_records = unique_txid_records
+
+	if filter_taxid != "false":
+		filter_taxid = int(filter_taxid)
+		filtered_txid_records = filter_txid_lineage(unique_txid_records, filter_taxid)
+		print(f"Number of records after filtering taxid: {len(filtered_txid_records)}")
 
 	with open(merged_msa_fasta_txid, "w") as processed_msa_handle:
-		SeqIO.write(unique_txid_records, processed_msa_handle, "fasta")
+		SeqIO.write(filtered_txid_records, processed_msa_handle, "fasta")
 
 
 if __name__ == "__main__":
