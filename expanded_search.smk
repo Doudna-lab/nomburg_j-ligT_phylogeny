@@ -192,7 +192,8 @@ rule attach_lineage:
 		merged_msa_fasta_txid = "{run}/clustalo_cluster{cluster}/merged/db-{db_prefix}_query_merged-txid.msa.fasta",
 	params:
 		match_colum = config["match_colum"],
-		add_colum = config["add_colum"]
+		add_colum = config["add_colum"],
+		filter_taxid = config["filter_taxid"]
 	conda:
 		"envs/bio.yaml"
 	script:
