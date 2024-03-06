@@ -17,12 +17,13 @@ shared_db_path: "/shared/db/genbank/257/blast"
 #shared_db_path: "/groups/doudna/team_resources/shared_databases/ncbi_nr"
 
 # Prefix name found in the input MSA filename
-input_prefix: ["hemagglutinin__YP_009987463__Lake_Chad_virus__688438"]
+input_prefix: ["GP64__YP_008378382__Choristoneura_rosaceana_nucleopolyhedrovirus__58094", "GP64__YP_009182316__Diatraea_saccharalis_granulovirus__1675862", "GP64__YP_009255283__Catopsilia_pomona_nucleopolyhedrovirus__1850906", "GP64__YP_009666390__Lonomia_obliqua_multiple_nucleopolyhedrovirus__134394", "glycoprotein__YP_009553284__Oz_virus__2137161", "gp64__YP_009666553__Oxyplax_ochracea_nucleopolyhedrovirus__2083176", "gp64_protein__YP_007250533__Thysanoplusia_orichalcea_nucleopolyhedrovirus__101850", "hemagglutinin__YP_009987463__Lake_Chad_virus__688438", "hemagglutinin__YP_009996582__Quaranjavirus_johnstonense__688437", "hemagglutinin_protein__YP_009110688__Wellfleet_Bay_virus__1566309", "major_budded_virus_envelope_glycoprotein__YP_009118511__Condylorrhiza_vestigialis_MNPV__1592576", "major_budded_virus_envelope_glycoprotein__YP_009316051__Anticarsia_gemmatalis_multiple_nucleopolyhedrovirus__268591"]
 
 cluster: ["735"]
 
 match_colum: "family_taxonID"
 add_colum: "family_genome_type"
+filter_taxid: "false"
 taxid: "1"
 
 

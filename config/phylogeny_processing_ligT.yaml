@@ -23,6 +23,7 @@ cluster: ["ligT"]
 
 match_colum: "family_taxonID"
 add_colum: "family_genome_type"
+filter_taxid: "10239"
 taxid: "10239"
 
 # Name given to the merger of the databases collected for the analysis

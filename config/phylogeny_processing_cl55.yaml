@@ -23,6 +23,7 @@ cluster: ["55"]
 
 match_colum: "family_taxonID"
 add_colum: "family_genome_type"
+filter_taxid: "false"
 taxid: "1"
 
 # Name given to the merger of the databases collected for the analysis

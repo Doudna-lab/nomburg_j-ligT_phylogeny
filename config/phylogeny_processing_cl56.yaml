@@ -23,6 +23,7 @@ cluster: ["56"]
 
 match_colum: "family_taxonID"
 add_colum: "family_genome_type"
+filter_taxid: "false"
 taxid: "1"
 
 
