@@ -19,16 +19,16 @@ rule all:
 		# # Count TaxID occurrences in PSI-BLAST output
 		# expand("{run}/krona_cluster{cluster}/{input_prefix}/db-{db_prefix}_query_taxid_counts.tsv",
 		# 	run=config["run"],db_prefix=config["db_prefix"], input_prefix=config["input_prefix"], cluster=config["cluster"]),
-		# # Export FASTA sequences of PSIBLAST Hits containing taxid labels
-		# expand("{run}/psiblast_out_cluster{cluster}/{input_prefix}/db-{db_prefix}_query_hits.fasta",
-		# 	run=config["run"],db_prefix=config["db_prefix"], input_prefix=config["input_prefix"], cluster=config["cluster"]),
+		# Export FASTA sequences of PSIBLAST Hits containing taxid labels
+		expand("{run}/psiblast_out_cluster{cluster}/{input_prefix}/db-{db_prefix}_query_hits.fasta",
+			run=config["run"],db_prefix=config["db_prefix"], input_prefix=config["input_prefix"], cluster=config["cluster"]),
 		# # Generate Krona plot
 		# expand("{run}/krona_cluster{cluster}/{input_prefix}/db-{db_prefix}_query_krona-plot.html",
 		# 	run=config["run"],db_prefix=config["db_prefix"], input_prefix=config["input_prefix"], cluster=config["cluster"]),
 		# # Re-align the initial MSA with the PSI-BLAST hit sequences
-		# expand("{run}/clustalo_cluster{cluster}/{input_prefix}/db-{db_prefix}_query.msa.fasta",
-		# 	run=config["run"], db_prefix=config["db_prefix"], input_prefix=config["input_prefix"], cluster=config["cluster"]),
-		#
+		expand("{run}/clustalo_cluster{cluster}/{input_prefix}/db-{db_prefix}_query.msa.fasta",
+			run=config["run"], db_prefix=config["db_prefix"], input_prefix=config["input_prefix"], cluster=config["cluster"]),
+
 		expand("{run}/clustalo_cluster{cluster}/merged/db-{db_prefix}_query_merged-input.msa.fasta",
 			run=config["run"], db_prefix=config["db_prefix"],cluster=config["cluster"]),
 		#
@@ -88,19 +88,19 @@ Wildcards: {wildcards}
         -out {output.psiblast_out}
         """
 
-# # noinspection SmkAvoidTabWhitespace
-# rule taxid_parse:
-# 	input:
-# 		psiblast_out = "{run}/psiblast_out_cluster{cluster}/{input_prefix}/db-{db_prefix}_query.blastout"
-# 	output:
-# 		taxid_counts = "{run}/krona_cluster{cluster}/{input_prefix}/db-{db_prefix}_query_taxid_counts.tsv",
-# 		hits_fasta= "{run}/psiblast_out_cluster{cluster}/{input_prefix}/db-{db_prefix}_query_hits.fasta"
-# 	params:
-# 		blast_col_names = config["blast_custom_cols"]
-# 	conda:
-# 		"envs/bio.yaml"
-# 	script:
-# 		"py/blastout_taxid_count.py"
+# noinspection SmkAvoidTabWhitespace
+rule taxid_parse:
+	input:
+		psiblast_out = "{run}/psiblast_out_cluster{cluster}/{input_prefix}/db-{db_prefix}_query.blastout"
+	output:
+		taxid_counts = "{run}/krona_cluster{cluster}/{input_prefix}/db-{db_prefix}_query_taxid_counts.tsv",
+		hits_fasta= "{run}/psiblast_out_cluster{cluster}/{input_prefix}/db-{db_prefix}_query_hits.fasta"
+	params:
+		blast_col_names = config["blast_custom_cols"]
+	conda:
+		"envs/bio.yaml"
+	script:
+		"py/blastout_taxid_count.py"
 
 # # noinspection SmkAvoidTabWhitespace
 # rule krona:
@@ -149,20 +149,20 @@ Wildcards: {wildcards}
 # 		"""
 #
 # # noinspection SmkAvoidTabWhitespace
-# rule realignment:
-# 	input:
-# 		hits_fasta="{run}/psiblast_out_cluster{cluster}/{input_prefix}/db-{db_prefix}_query_hits.fasta",
-# 		fasta_in=lambda wildcards: glob.glob("{input_dir}/{input_prefix}.fasta".format(
-# 			input_dir=config["input_dir"],input_prefix=wildcards.input_prefix))
-# 	output:
-# 		post_search_msa = "{run}/clustalo_cluster{cluster}/{input_prefix}/db-{db_prefix}_query.msa.fasta",
-# 		merged_input= "{run}/clustalo_cluster{cluster}/{input_prefix}/db-{db_prefix}_query_merged-input.fasta",
-# 	threads: config["threads"]
-# 	shell:
-# 		"""
-# 		cat {input.fasta_in} {input.hits_fasta} > {output.merged_input}
-# 		clustalo --threads {threads} -i {output.merged_input} -o {output.post_search_msa} -v
-# 		"""
+rule realignment:
+	input:
+		hits_fasta="{run}/psiblast_out_cluster{cluster}/{input_prefix}/db-{db_prefix}_query_hits.fasta",
+		fasta_in=lambda wildcards: glob.glob("{input_dir}/{input_prefix}.fasta".format(
+			input_dir=config["input_dir"],input_prefix=wildcards.input_prefix))
+	output:
+		post_search_msa = "{run}/clustalo_cluster{cluster}/{input_prefix}/db-{db_prefix}_query.msa.fasta",
+		merged_input= "{run}/clustalo_cluster{cluster}/{input_prefix}/db-{db_prefix}_query_merged-input.fasta",
+	threads: config["threads"]
+	shell:
+		"""
+		cat {input.fasta_in} {input.hits_fasta} > {output.merged_input}
+		clustalo --threads {threads} -i {output.merged_input} -o {output.post_search_msa} -v
+		"""
 
 # noinspection SmkAvoidTabWhitespace
 rule merged_alignment:
@@ -228,6 +228,7 @@ rule merge_psiblast_out:
 	shell:
 		"""
 		cat {input.list_psiblast_out} > {output.merged_psiblast}
+		sed -i '/CONVERGED/d;/^$/d' {output.merged_psiblast}
 		"""
 
 # noinspection SmkAvoidTabWhitespace
