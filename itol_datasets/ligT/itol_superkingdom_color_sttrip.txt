@@ -113,52 +113,14 @@ COLOR_BRANCHES 0
 #       Actual data follows after the "DATA" keyword              #
 #=================================================================#
 DATA
+# Eukaryota
+CONTAINS==\|2759\| #2F00EA
 
-# Ascomycota
-#CONTAINS==\|4890\| #795599
+# Viruses
+CONTAINS==\|10239\| #06AD2D
 
+# Bacteria
+CONTAINS==\|2\| #C24154
 
-# Magnoliopsida
-#CONTAINS==\|3398\| #CAE56F
-
-# Mammalia
-#CONTAINS==\|40674\| #84C6EB
-
-# Teleostei
-#CONTAINS==\|32443\| #EF6F6F
-
-# Sauria
-#CONTAINS==\|32561\| #EA046A
-
-
-# Bacillota
-#CONTAINS==\|1239\| #F0D699
-
-
-# Alphaproteobacteria
-#CONTAINS==\|28211\| #0057F9
-
-# Gammaproteobacteria
-#CONTAINS==\|1236\| #548F04
-
-
-
-# Nucleocytoviricota
-CONTAINS==\|2732007\| #E19F56
-
-# Nudiviridae
-CONTAINS==\|1511852\| #9003A3
-
-# Baculoviridae
-CONTAINS==\|10442\| #0AEBBF
-
-
-
-#Examples:
-#assign a red colored strip to leaf 9606, with label 'Human'
-#9606 #ff0000 Human
-
-#assign a green, semi-transparent (alpha 0.5) strip to an internal node, without any label. If 'Show internal values' is set to 'No', this will only be displayed if the node is collapsed.
-#9606|5664 rgba(0,255,0,0.5)
-
-#^.*(\#\w+)\} /\*\s+(\d+)\s+\*/\s+/\*\s+(\w+)\s+\*/
+# Archaea
+CONTAINS==\|2157\| #EACC2B

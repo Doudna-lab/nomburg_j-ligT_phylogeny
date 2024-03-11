@@ -113,45 +113,10 @@ COLOR_BRANCHES 0
 #       Actual data follows after the "DATA" keyword              #
 #=================================================================#
 DATA
-
-# Ascomycota
-#CONTAINS==\|4890\| #795599
-
-
-# Magnoliopsida
-#CONTAINS==\|3398\| #CAE56F
-
-# Mammalia
-#CONTAINS==\|40674\| #84C6EB
-
-# Teleostei
-#CONTAINS==\|32443\| #EF6F6F
-
-# Sauria
-#CONTAINS==\|32561\| #EA046A
-
-
-# Bacillota
-#CONTAINS==\|1239\| #F0D699
-
-
-# Alphaproteobacteria
-#CONTAINS==\|28211\| #0057F9
-
-# Gammaproteobacteria
-#CONTAINS==\|1236\| #548F04
-
-
-
-# Nucleocytoviricota
-CONTAINS==\|2732007\| #E19F56
-
-# Nudiviridae
-CONTAINS==\|1511852\| #9003A3
-
-# Baculoviridae
-CONTAINS==\|10442\| #0AEBBF
-
+#
+CONTAINS==\|\| #795599
+#
+CONTAINS==\|\| #CAE56F
 
 
 #Examples:

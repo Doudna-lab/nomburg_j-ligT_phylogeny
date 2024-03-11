@@ -66,7 +66,8 @@ def attach_taxid2fasta(fasta_seq_records_path, taxid_to_gentype_dictionary, full
 				txid_lineage_string = "|".join(map(str, full_txid_dictionary[fasta_id_txid]))
 				record.id = f"{fasta_seq_id}|{txid_lineage_string}|{fasta_id_txid}"
 			except KeyError:
-				pass
+				loop_fasta_seq_records.append(record)
+				continue
 			if fasta_id_txid in set(taxid_to_gentype_dictionary.keys()):
 				record.id = f"{record.id}|{taxid_to_gentype_dictionary[fasta_id_txid]}"
 				count += 1
@@ -86,10 +87,12 @@ def remove_fasta_duplicates(fasta_seq_records):
 	return unique_records
 
 
-def filter_txid_lineage(fasta_seq_records, txid_lineage_filter):
+def filter_txid_lineage(fasta_seq_records, txid_lineage_filter, keep_sequences):
 	filtered_seq_records = []
 	for record in fasta_seq_records:
 		if re.search(r"\|{}\|".format(txid_lineage_filter), record.id):
+			filtered_seq_records.append(record)
+		elif record.id in set(keep_sequences):
 			filtered_seq_records.append(record)
 	return filtered_seq_records
 
@@ -104,12 +107,13 @@ def main():
 	match_colum = str(snakemake.params.match_colum)
 	add_colum = str(snakemake.params.add_colum)
 	filter_taxid = str(snakemake.params.filter_taxid)
+	reference_prefixes = list(snakemake.params.reference_prefixes)
 	#   SMK Outputs
 	merged_msa_fasta_txid = str(snakemake.output.merged_msa_fasta_txid)
 
 	#DEBUG INPUT
 	# id_match_table = "/Users/bellieny/projects/nomburg_j-ligT_phylogeny/input_data/family_genome_types_taxID.tsv"
-	# merged_msa_fasta = "/Users/bellieny/projects/nomburg_j-ligT_phylogeny/dump/merged/db-nr_query_merged-input.msa.fasta"
+	# merged_msa_fasta = "/Users/bellieny/projects/nomburg_j-ligT_phylogeny/dump/ligT_phyrec/clustalo_clusterligT/merged/db-nr_query_merged-input.msa.fasta"
 	# txid_lineage = "/Users/bellieny/projects/nomburg_j-ligT_phylogeny/input_data/taxidlineage.dmp"
 	# match_colum = "family_taxonID"
 	# add_colum = "family_genome_type"
@@ -137,7 +141,7 @@ def main():
 
 	if filter_taxid != "false":
 		filter_taxid = int(filter_taxid)
-		filtered_txid_records = filter_txid_lineage(unique_txid_records, filter_taxid)
+		filtered_txid_records = filter_txid_lineage(unique_txid_records, filter_taxid, reference_prefixes)
 		print(f"Number of records after filtering taxid: {len(filtered_txid_records)}")
 
 	with open(merged_msa_fasta_txid, "w") as processed_msa_handle:

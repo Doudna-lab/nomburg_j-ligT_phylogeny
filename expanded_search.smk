@@ -193,7 +193,8 @@ rule attach_lineage:
 	params:
 		match_colum = config["match_colum"],
 		add_colum = config["add_colum"],
-		filter_taxid = config["filter_taxid"]
+		filter_taxid = config["filter_taxid"],
+		reference_prefixes = config["input_prefix"],
 	conda:
 		"envs/bio.yaml"
 	script:

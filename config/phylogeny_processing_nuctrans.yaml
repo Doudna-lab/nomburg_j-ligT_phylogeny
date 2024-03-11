@@ -17,7 +17,14 @@ shared_db_path: "/shared/db/genbank/257/blast"
 #shared_db_path: "/groups/doudna/team_resources/shared_databases/ncbi_nr"
 
 # Prefix name found in the input MSA filename
-input_prefix: ["F22__YP_009173937__Felis_catus_gammaherpesvirus_1__1452540", "ORF58__NP_065557__Alcelaphine_gammaherpesvirus_1__35252", "Transporter_major_facilitator_subfamily_protein__YP_009165055__Mollivirus_sibericum_Viruses.__X", "UL43__YP_003084378__Anatid_alphaherpesvirus_1__104388", "envelope_protein_UL43__NP_040138__Human_alphaherpesvirus_3__10335", "envelope_protein_UL43__NP_066875__Gallid_alphaherpesvirus_3__35250", "envelope_protein_UL43__YP_009054920__Equid_alphaherpesvirus_3__80341", "envelope_protein_UL43__YP_068346__Suid_alphaherpesvirus_1__10345", "hypothetical_protein_AsGV044__YP_009513074__Agrotis_segetum_granulovirus__10464", "hypothetical_protein_psal_cds_1236__YP_008438639__Pandoravirus_salinus__1349410"]
+input_prefix: ["F22__YP_009173937__Felis_catus_gammaherpesvirus_1__1452540",
+               "ORF58__NP_065557__Alcelaphine_gammaherpesvirus_1__35252",
+               "UL43__YP_003084378__Anatid_alphaherpesvirus_1__104388",
+               "envelope_protein_UL43__NP_040138__Human_alphaherpesvirus_3__10335",
+               "envelope_protein_UL43__NP_066875__Gallid_alphaherpesvirus_3__35250",
+               "envelope_protein_UL43__YP_009054920__Equid_alphaherpesvirus_3__80341",
+               "envelope_protein_UL43__YP_068346__Suid_alphaherpesvirus_1__10345"
+]
 
 cluster: ["nucleoside_transporter_sequences"]
 
