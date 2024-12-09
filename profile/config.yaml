@@ -1,0 +1,15 @@
+latency-wait: 120
+reason: True
+use-conda: True
+rerun-incomplete: True
+show-failed-logs: True
+keep-going: True
+printshellcmds: True
+# Cluster submission
+jobname: "phyrec.{jobid}"              # Provide a custom name for the jobscript that is submitted to the cluster.
+jobs: 12                              #Use at most N CPU cluster/cloud jobs in parallel.
+
+rerun-trigger: 'mtime'
+
+cluster: "sbatch -t {cluster.time}"
+cluster-config: "config/cluster.yaml"
